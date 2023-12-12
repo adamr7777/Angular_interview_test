@@ -17,12 +17,17 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
         alt="Exterior photo of {{housingLocation?.name}}"/>
       <section class="listing-description">
         <h2 class="listing-heading">{{housingLocation?.name}}</h2>
-        <p class="listing-location">{{housingLocation?.city}}, {{housingLocation?.state}}</p>
+        <!-- add the housing locations country Task 2.1-->
+        <p class="listing-location">{{housingLocation?.city}}, {{housingLocation?.state}}, {{housingLocation?.country}}</p>
       </section>
       <section class="listing-features">
         <h2 class="section-heading">About this housing location</h2>
         <ul>
-          <li>Units available: {{housingLocation?.availableUnits}}</li>
+          <!-- update with +5 functionality Task 2.2-->
+          <!-- note: had to add cond rendering with *ngIf to get rid of TS error in the ternary-->
+          <li *ngIf="housingLocation">Units available: {{
+            housingLocation.availableUnits > 5 ? '+5': housingLocation.availableUnits
+          }}</li>
           <li>Does this location have wifi: {{housingLocation?.wifi}}</li>
           <li>Does this location have laundry: {{housingLocation?.laundry}}</li>
         </ul>
