@@ -14,14 +14,14 @@ import { HousingService } from '../housing.service';
   template: `
     <section>
       <form>
-        <input type="text" placeholder="Filter by city">
-        <button class="primary" type="button">Search</button>
-        <button class="primary" type="button">Reset</button>
+        <input type="text" placeholder="Filter by city" #filter> 
+        <button class="primary" type="button" (click)="handleSearch(filter.value)">Search</button>
+        <button class="primary reset-btn" type="button" (click)="handleReset()">Reset</button>
       </form>
     </section>
     <section class="results">
       <app-housing-location
-        *ngFor="let housingLocation of housingLocationList"
+        *ngFor="let housingLocation of filteredLocationsList"
         [housingLocation]="housingLocation">
       </app-housing-location>
     </section>
@@ -32,9 +32,27 @@ import { HousingService } from '../housing.service';
 export class HomeComponent {
   housingLocationList: HousingLocation[] = [];
   housingService: HousingService = inject(HousingService);
+  filteredLocationsList: HousingLocation[] = []
 
   constructor() {
     this.housingLocationList = this.housingService.getAllHousingLocations();
+    this.filteredLocationsList = this.housingLocationList;
   }
 
+  // Task 4.1 Search btn functionality
+  handleSearch(inputText: String) {
+    if(!inputText) {
+      this.filteredLocationsList = this.housingLocationList;
+      return;
+    }
+    
+    this.filteredLocationsList = this.housingLocationList.filter((location)=> 
+      location.city.toLowerCase().includes(inputText.toLowerCase()))
+  }
+  // Task 4.2 Reset Filter btn functionality
+  handleReset() {
+    this.filteredLocationsList = this.housingLocationList;
+  }
+  // notes:
+  // *added 5px left margin to Reset btn in css as well as hovered state (cursor: pointer) to Search and Reset btn
 }
