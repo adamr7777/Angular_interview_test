@@ -17,6 +17,7 @@ export class HousingService {
       availableUnits: 4,
       wifi: true,
       laundry: true,
+      users: []
     },
     {
       id: 1,
@@ -27,7 +28,8 @@ export class HousingService {
       photo: '/assets/accomodations/2.avif',
       availableUnits: 0,
       wifi: false,
-      laundry: true
+      laundry: true,
+      users: []
     },
     {
       id: 2,
@@ -38,7 +40,8 @@ export class HousingService {
       photo: '/assets/accomodations/3.avif',
       availableUnits: 1,
       wifi: false,
-      laundry: false
+      laundry: false,
+      users: []
     },
     {
       id: 3,
@@ -49,7 +52,8 @@ export class HousingService {
       photo: '/assets/accomodations/4.avif',
       availableUnits: 1,
       wifi: true,
-      laundry: false
+      laundry: false,
+      users: []
     },
     {
       id: 4,
@@ -60,7 +64,8 @@ export class HousingService {
       photo: '/assets/accomodations/5.avif',
       availableUnits: 1,
       wifi: true,
-      laundry: false
+      laundry: false,
+      users: []
     },
     {
       id: 5,
@@ -71,7 +76,8 @@ export class HousingService {
       photo: '/assets/accomodations/6.avif',
       availableUnits: 2,
       wifi: true,
-      laundry: true
+      laundry: true,
+      users: []
     },
     {
       id: 6,
@@ -82,7 +88,8 @@ export class HousingService {
       photo: '/assets/accomodations/7.avif',
       availableUnits: 12,
       wifi: true,
-      laundry: true
+      laundry: true,
+      users: []
     },
     {
       id: 7,
@@ -93,7 +100,8 @@ export class HousingService {
       photo: '/assets/accomodations/8.avif',
       availableUnits: 2,
       wifi: true,
-      laundry: true
+      laundry: true,
+      users: []
     },
     {
       id: 8,
@@ -104,7 +112,8 @@ export class HousingService {
       photo: '/assets/accomodations/9.avif',
       availableUnits: 10,
       wifi: false,
-      laundry: false
+      laundry: false,
+      users: []
     },
     {
       id: 9,
@@ -115,7 +124,9 @@ export class HousingService {
       photo: '/assets/accomodations/10.avif',
       availableUnits: 6,
       wifi: true,
-      laundry: true
+      laundry: true,
+      users: []
+
     }
   ];
 
@@ -126,8 +137,11 @@ export class HousingService {
   getHousingLocationById(id: number): HousingLocation | undefined {
     return this.housingLocationList.find(housingLocation => housingLocation.id === id);
   }
-  submitApplication(firstName: string, lastName: string, email: string) {
-    console.log(`Homes application received: firstName: ${firstName}, lastName: ${lastName}, email: ${email}.`);
+  submitApplication(firstName: string, lastName: string, email: string, id: number) {
+    // console.log(`Homes application received: firstName: ${firstName}, lastName: ${lastName}, email: ${email}.`);
+    console.log(id);
+    // this.housingLocationList[id].test = 'test'
+
   }
 
   deleteHousingLocation(id: number) {

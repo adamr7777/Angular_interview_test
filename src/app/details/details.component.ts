@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { HousingService } from '../housing.service';
 import { HousingLocation } from '../housinglocation';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 @Component({
   selector: 'app-details',
   standalone: true,
@@ -38,7 +38,8 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
         </ul>
       </section>
       <section class="listing-apply">
-        <h2 class="section-heading">Apply now to live here</h2>
+        <!-- changed the form text to display a warning when form not valid and change the color to red Task 5.1-->
+        <h2 class="section-heading" [ngClass]="{\'red-text': notValid\}">{{formText}}</h2>
         <form [formGroup]="applyForm" (submit)="submitApplication()">
           <label for="first-name">First Name</label>
           <input id="first-name" type="text" formControlName="firstName">
@@ -61,11 +62,16 @@ export class DetailsComponent {
   housingService = inject(HousingService);
   router: Router = inject(Router);
   housingLocation: HousingLocation | undefined;
+
   applyForm = new FormGroup({
-    firstName: new FormControl(''),
-    lastName: new FormControl(''),
-    email: new FormControl('')
+    firstName: new FormControl('', Validators.required),
+    lastName: new FormControl ('', Validators.required),
+    email: new FormControl('', [Validators.required, Validators.email])
   });
+
+  formText = 'Apply now to live here';
+
+  notValid: Boolean = false;
 
   constructor() {
     const housingLocationId = parseInt(this.route.snapshot.params['id'], 10);
@@ -78,12 +84,23 @@ export class DetailsComponent {
 
     this.housingService.deleteHousingLocation(this.housingLocation!.id);
   }
-  
+
   submitApplication() {
+    // if not valid, display the message and chage the color. When submitted, display success message Task 5.1 
+    if(!this.applyForm.valid) {
+      this.formText = "Please enter the contact information";
+      this.notValid = true
+      return;
+    } 
+
+    this.formText = "Application successful!";
+    this.notValid = false
+
     this.housingService.submitApplication(
       this.applyForm.value.firstName ?? '',
       this.applyForm.value.lastName ?? '',
-      this.applyForm.value.email ?? ''
+      this.applyForm.value.email ?? '',
+      this.housingLocation!.id
     );
   }
 }

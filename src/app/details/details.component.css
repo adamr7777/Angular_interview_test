@@ -88,6 +88,15 @@ input {
   border-left: none;
   border-bottom: solid .3px;
 }
+
+input.ng-invalid.ng-touched {
+  border: red 1px solid;
+}
+
+.red-text {
+  color: red;
+}
+
 @media (max-width: 1024px) {
   .listing-photo {
     width: 100%;
