@@ -13,8 +13,11 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
   ],
   template: `
     <article>
-      <img class="listing-photo" [src]="housingLocation?.photo"
-        alt="Exterior photo of {{housingLocation?.name}}"/>
+      <section class="photo-container">
+        <img class="listing-photo" [src]="housingLocation?.photo"
+          alt="Exterior photo of {{housingLocation?.name}}"/>
+        <button class="delete-btn primary">Delete</button>
+      </section>
       <section class="listing-description">
         <h2 class="listing-heading">{{housingLocation?.name}}</h2>
         <!-- add the housing locations country Task 2.1-->
@@ -43,7 +46,7 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
           <label for="email">Email</label>
           <input id="email" type="email" formControlName="email">
-          <button type="submit" class="primary">Apply now</button>
+          <button type="submit" class="primary apply-btn">Apply now</button>
         </form>
       </section>
     </article>

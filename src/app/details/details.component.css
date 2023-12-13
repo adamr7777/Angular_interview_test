@@ -1,9 +1,34 @@
 .listing-photo {
   height: 600px;
-  width: 50%;
+  width: 100%;
   object-fit: cover;
   border-radius: 30px;
+  /* float: right; */
+}
+
+.photo-container {
+  display: flex;
+  flex-direction:column;
+  height: 600px;
+  width: 50%;
+  /* object-fit: cover; */
+  /* border-radius: 30px; */
   float: right;
+}
+
+.delete-btn {
+  /* width: 100%; */
+  /* font-size: 16px; */
+  margin-top: 10px;
+  background-color: red;
+  border: none;
+}
+.delete-btn:hover {
+  cursor: pointer;
+}
+
+.apply-btn:hover {
+  cursor: pointer;
 }
 
 .listing-heading {
