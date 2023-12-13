@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { HousingService } from '../housing.service';
 import { HousingLocation } from '../housinglocation';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
@@ -9,6 +9,7 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
   standalone: true,
   imports: [
     CommonModule,
+    RouterModule,
     ReactiveFormsModule
   ],
   template: `
@@ -16,7 +17,8 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
       <section class="photo-container">
         <img class="listing-photo" [src]="housingLocation?.photo"
           alt="Exterior photo of {{housingLocation?.name}}"/>
-        <button class="delete-btn primary">Delete</button>
+          <!-- create Delete btn Task 3.1-->
+        <button class="delete-btn primary" (click)="deleteMe()">Delete</button>
       </section>
       <section class="listing-description">
         <h2 class="listing-heading">{{housingLocation?.name}}</h2>
@@ -57,6 +59,7 @@ export class DetailsComponent {
 
   route: ActivatedRoute = inject(ActivatedRoute);
   housingService = inject(HousingService);
+  router: Router = inject(Router);
   housingLocation: HousingLocation | undefined;
   applyForm = new FormGroup({
     firstName: new FormControl(''),
@@ -70,10 +73,12 @@ export class DetailsComponent {
   }
 
   deleteMe() {
-    //TODO: TASK 3: delete functionality
-    console.log('deleteHousingLocation', this.housingLocation!.id);
-    // this.housingService.deleteHousingLocation(this.housingLocation!.id);
+    //TODO: TASK 3.2: delete functionality
+    this.router.navigate(['/']);
+
+    this.housingService.deleteHousingLocation(this.housingLocation!.id);
   }
+  
   submitApplication() {
     this.housingService.submitApplication(
       this.applyForm.value.firstName ?? '',

@@ -131,7 +131,8 @@ export class HousingService {
   }
 
   deleteHousingLocation(id: number) {
-    console.log('To implement delete functionality');
-    //TODO: TASK 3: delete functionality - delete location from 
+    //TODO: TASK 3.3: delete functionality - delete location from 
+    const filteredLocationsArray = this.housingLocationList.filter((location)=> location.id !== id);
+    this.housingLocationList = filteredLocationsArray;
   }
 }
