@@ -16,7 +16,7 @@ import { HousingService } from '../housing.service';
       <form>
         <input type="text" placeholder="Filter by city" #filter> 
         <button class="primary" type="button" (click)="handleSearch(filter.value)">Search</button>
-        <button class="primary reset-btn" type="button" (click)="handleReset()">Reset</button>
+        <button class="primary reset-btn" type="button" (click)="handleReset(filter)">Reset</button>
       </form>
     </section>
     <section class="results">
@@ -40,7 +40,7 @@ export class HomeComponent {
   }
 
   // Task 4.1 Search btn functionality
-  handleSearch(inputText: String) {
+  handleSearch(inputText: string) {
     if(!inputText) {
       this.filteredLocationsList = this.housingLocationList;
       return;
@@ -50,8 +50,9 @@ export class HomeComponent {
       location.city.toLowerCase().includes(inputText.toLowerCase()))
   }
   // Task 4.2 Reset Filter btn functionality
-  handleReset() {
+  handleReset(filter: HTMLInputElement) {
     this.filteredLocationsList = this.housingLocationList;
+    filter.value = '';
   }
   // notes:
   // *added 5px left margin to Reset btn in css as well as hovered state (cursor: pointer) to Search and Reset btn

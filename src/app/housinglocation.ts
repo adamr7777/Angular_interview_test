@@ -8,5 +8,9 @@ export interface HousingLocation {
   availableUnits: number;
   wifi: boolean;
   laundry: boolean;
-  users: [] | null
+  users: {
+    firstName: string;
+    lastName: string;
+    email: string;
+  }[] | null;
 }

@@ -52,6 +52,23 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
           <button type="submit" class="primary apply-btn">Apply now</button>
         </form>
       </section>
+      <section class="applications">
+        <h2 class="applications-heading">Applicantions</h2>
+        <ul class="applications-list">
+            <li class="applications-item">
+                <h3 class="application-title">Application 1</h3>
+                <p class="detail-label"><span>First Name:</span> ohn</p> 
+                <p class="detail-label"><span>Last Name:</span> sfaf</p> 
+                <p class="detail-label"><span>Email:</span> sasfdsa</p> 
+          </li>
+          <li class="applications-item">
+                <h3 class="application-title">Application 2</h3>
+                <p class="detail-label"><span>First Name:</span> ohn</p> 
+                <p class="detail-label"><span>Last Name:</span> sfaf</p> 
+                <p class="detail-label"><span>Email:</span> sasfdsa</p> 
+          </li>
+        </ul>
+      </section>
     </article>
   `,
   styleUrls: ['./details.component.css'],
@@ -71,11 +88,14 @@ export class DetailsComponent {
 
   formText = 'Apply now to live here';
 
-  notValid: Boolean = false;
+  notValid: boolean = false;
+
+  
 
   constructor() {
     const housingLocationId = parseInt(this.route.snapshot.params['id'], 10);
     this.housingLocation = this.housingService.getHousingLocationById(housingLocationId);
+    
   }
 
   deleteMe() {
@@ -104,3 +124,8 @@ export class DetailsComponent {
     );
   }
 }
+
+
+
+
+ 

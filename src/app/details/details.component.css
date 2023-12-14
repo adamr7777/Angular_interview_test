@@ -103,3 +103,37 @@ input.ng-invalid.ng-touched {
     height: 400px;
   }
 }
+
+.applications {
+  margin: 40px 0;
+}
+
+.applications-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 10px;  
+}
+
+.applications-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: var(--secondary-color) solid 3px;
+  margin: 30px 0;
+  padding: 15px;
+  height: 200px;
+}
+
+.application-title {
+  color: var(--secondary-color);
+  margin-left: 30px;
+}
+
+.detail-label span {
+  font-weight: bold;
+}
+
+
+
+
+
