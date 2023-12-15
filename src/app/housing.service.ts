@@ -26,7 +26,7 @@ export class HousingService {
       country: 'USA',
       state: 'CA',
       photo: '/assets/accomodations/2.avif',
-      availableUnits: 0,
+      availableUnits: 3,
       wifi: false,
       laundry: true,
       applications: []
@@ -141,11 +141,13 @@ export class HousingService {
   
   submitApplication(firstName: string, lastName: string, email: string, id: number) {
     // Task 5.2
-    this.housingLocationList[id].applications?.push({
-      firstName,
-      lastName,
-      email
-    });
+    this.housingLocationList.forEach((location)=> {
+      if(location.id === id) location?.applications?.push({
+        firstName,
+        lastName,
+        email
+      });
+    })  
   }
 
   deleteHousingLocation(id: number) {

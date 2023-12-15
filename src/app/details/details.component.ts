@@ -53,8 +53,12 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 
           <label for="email">Email</label>
           <input id="email" type="email" formControlName="email">
-          <!-- if there no units available the apply button gets disabled -->
-          <button [disabled]="housingLocation?.availableUnits! < 1" type="submit" class="primary apply-btn">
+          <!-- if there no units available the apply button gets disabled and changes color-->
+          <button 
+            [disabled]="housingLocation!.availableUnits < 1" 
+            type="submit" class="primary apply-btn"
+            [ngStyle]="!housingLocation?.availableUnits ? {'background-color': '#808080', 'color': '#ffffff'} : {}" 
+            >
             Apply now
         </button>
         </form>
@@ -131,4 +135,5 @@ export class DetailsComponent {
 
 
 
- 
+
+
