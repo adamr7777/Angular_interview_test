@@ -8,7 +8,7 @@ export interface HousingLocation {
   availableUnits: number;
   wifi: boolean;
   laundry: boolean;
-  users: {
+  applications: {
     firstName: string;
     lastName: string;
     email: string;

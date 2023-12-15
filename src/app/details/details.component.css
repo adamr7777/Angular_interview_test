@@ -97,6 +97,20 @@ input.ng-invalid.ng-touched {
   color: red;
 }
 
+.applications {
+  margin: 40px 0;
+}
+
+.applications-heading {
+  margin-bottom: 30px;
+}
+
+.applications-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 320px));
+  grid-gap: 10px;  
+}
+
 @media (max-width: 1024px) {
   .listing-photo {
     width: 100%;
@@ -104,34 +118,7 @@ input.ng-invalid.ng-touched {
   }
 }
 
-.applications {
-  margin: 40px 0;
-}
 
-.applications-list {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-gap: 10px;  
-}
-
-.applications-item {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  border: var(--secondary-color) solid 3px;
-  margin: 30px 0;
-  padding: 15px;
-  height: 200px;
-}
-
-.application-title {
-  color: var(--secondary-color);
-  margin-left: 30px;
-}
-
-.detail-label span {
-  font-weight: bold;
-}
 
 
 

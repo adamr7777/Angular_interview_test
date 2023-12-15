@@ -14,10 +14,10 @@ export class HousingService {
       country: 'USA',
       state: 'IL',
       photo: '/assets/accomodations/1.avif',
-      availableUnits: 4,
+      availableUnits: 8,
       wifi: true,
       laundry: true,
-      users: []
+      applications: []
     },
     {
       id: 1,
@@ -29,7 +29,7 @@ export class HousingService {
       availableUnits: 0,
       wifi: false,
       laundry: true,
-      users: []
+      applications: []
     },
     {
       id: 2,
@@ -41,7 +41,7 @@ export class HousingService {
       availableUnits: 1,
       wifi: false,
       laundry: false,
-      users: []
+      applications: []
     },
     {
       id: 3,
@@ -53,7 +53,7 @@ export class HousingService {
       availableUnits: 1,
       wifi: true,
       laundry: false,
-      users: []
+      applications: []
     },
     {
       id: 4,
@@ -65,7 +65,7 @@ export class HousingService {
       availableUnits: 1,
       wifi: true,
       laundry: false,
-      users: []
+      applications: []
     },
     {
       id: 5,
@@ -77,7 +77,7 @@ export class HousingService {
       availableUnits: 2,
       wifi: true,
       laundry: true,
-      users: []
+      applications: []
     },
     {
       id: 6,
@@ -89,7 +89,7 @@ export class HousingService {
       availableUnits: 12,
       wifi: true,
       laundry: true,
-      users: []
+      applications: []
     },
     {
       id: 7,
@@ -101,7 +101,7 @@ export class HousingService {
       availableUnits: 2,
       wifi: true,
       laundry: true,
-      users: []
+      applications: []
     },
     {
       id: 8,
@@ -113,7 +113,7 @@ export class HousingService {
       availableUnits: 10,
       wifi: false,
       laundry: false,
-      users: []
+      applications: []
     },
     {
       id: 9,
@@ -125,10 +125,11 @@ export class HousingService {
       availableUnits: 6,
       wifi: true,
       laundry: true,
-      users: []
-
+      applications: []
     }
   ];
+
+  
 
   getAllHousingLocations(): HousingLocation[] {
     return this.housingLocationList;
@@ -140,7 +141,7 @@ export class HousingService {
   
   submitApplication(firstName: string, lastName: string, email: string, id: number) {
     // Task 5.2
-    this.housingLocationList[id].users?.push({
+    this.housingLocationList[id].applications?.push({
       firstName,
       lastName,
       email
@@ -151,5 +152,10 @@ export class HousingService {
     //TODO: TASK 3.3: delete functionality - delete location from 
     const filteredLocationsArray = this.housingLocationList.filter((location)=> location.id !== id);
     this.housingLocationList = filteredLocationsArray;
+  }
+
+  reduceAvailableUnits(id: number) {
+    const location = this.housingLocationList.find((location)=> location.id === id)
+    location!.availableUnits -= 1
   }
 }

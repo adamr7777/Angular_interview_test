@@ -1,0 +1,18 @@
+
+.applications-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: var(--secondary-color) solid 3px;
+  padding: 15px;
+  height: 200px;
+}
+
+.application-title {
+  color: var(--secondary-color);
+  margin: 0 auto;
+}
+
+.detail-label span {
+  font-weight: bold;
+}
